@@ -1,0 +1,17 @@
+# Set a path/url to a logo that will be displayed instead of the title
+#logo: "/assets/images/just-the-docs.png"
+# Set a path/url to a favicon that will be displayed by the browser
+#favicon_ico: "/assets/images/favicon.ico"
+
+
+title: The Self-Balancing Robot
+description: Project documentation for the self-balancing robot!
+theme: just-the-docs
+# Color scheme supports "light" (default) and "dark"
+color_scheme: dark
+
+
+url: https://just-the-docs.github.io
+
+aux_links:
+  Template Repository: https://github.com/just-the-docs/just-the-docs-template
