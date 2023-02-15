@@ -69,9 +69,7 @@ DONE
 ### Pulse-Width Modulation (PWM)
 Pulse-width modulation (PWM) is a way of varying the average power output of a digital signal by pulsing the digital signal on and off at different lengths of time. 
 
-A PWM signal is a periodic signal ....
-
-- talk about its periodicity
+A PWM signal is a periodic rectangular signal ....
 
 
 Decreasing the 'on'-time of the pulse results in a lower power output to the motor and hence a decrease in speed.
@@ -93,7 +91,7 @@ Duty cycle
 
 
 
-
+-----
 
 In an Arduino board, the digital pins output a voltage of 5V when set to HIGH and 0V when set to LOW. Therefore, a duty cycle of 50% will result in a 
 
