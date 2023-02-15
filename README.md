@@ -1,1 +1,1 @@
-# Self-Stabilising-Robot
+# Self-Balancing-Robot
