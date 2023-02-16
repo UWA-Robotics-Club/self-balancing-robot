@@ -69,10 +69,9 @@ DONE
 ### Pulse-Width Modulation (PWM)
 Pulse-width modulation (PWM) is a way of varying the average power output of a digital signal by pulsing the digital signal on and off at different lengths of time. 
 
-A PWM signal is a periodic rectangular signal ....
+A PWM signal is a periodic rectangular signal which alternates between HIGH (5V on Arduinos) and LOW (0V). Decreasing the 'on'-time of the pulse results in a lower power output to the motor and hence a decrease in speed.
 
-
-Decreasing the 'on'-time of the pulse results in a lower power output to the motor and hence a decrease in speed.
+----
 
 #### Definitions
 T_on
@@ -89,14 +88,98 @@ Duty cycle
 : $$ \frac{T_{on}}{T} $$
 : = T_on/T
 
+![alt text](http://127.0.0.1:4000/assets/pwm_labelled.png)
+
+----
+
+## Example
+
+![alt text](http://127.0.0.1:4000/assets/Pulse-Width-Modulation.jpg)
+
+For example, at a duty cycle of 25%, only 25% of the maximum (100% duty cycle) power output will be delivered to the motor. Therefore, if a duty cycle of 100% results in the motor spinning at 100 rpm, a 50% duty cycle will turn the motor at 50 rpm.
+
+As a result, we can use PWM to control the speed of a DC motor.
 
 
------
-
-In an Arduino board, the digital pins output a voltage of 5V when set to HIGH and 0V when set to LOW. Therefore, a duty cycle of 50% will result in a 
+----
 
 ### Pinout Diagram
+
+![alt text](http://127.0.0.1:4000/assets/L298N-Motor-Driver-Module-Pinout.png)
+
+The L298N motor driver module contains 3 power supply pins (VS, GND, VSS), 4 output (OUT) pins, 4 input (IN) pins and 2 enable (EN) pins.
+
+adapted from: https://lastminuteengineers.com/l298n-dc-stepper-driver-arduino-tutorial/ 
+
+#### Power Supply Pins
+
+- add power supply pinout only
+
+| Pin  | Function | Connections |
+| :--- | :---     | :---        |
+| VCC |  Powers the motors connected to the module and accepts inputs from 5V to 12V  | Connected to the positive terminal of the power supply
+| GND |  Common ground pin  | Connected to the negative terminal of the power supply |
+| VSS or 5V |  Powers the logic circuit of the L298N module and accepts inputs of 5V to 7V  | Connected to positive terminal of another power supply |
+
+- add diagram with power supply connections (use 6 AA batteies in diagram if possible lmaoo)
+- add diagram with only jumper regulator
+
+The L298N motor driver module also includes a regulator enable jumper which allows us to power the logic circuitry using the motor power supply. When the jumper is in place, we no longer need to connect a power supply to the VSS pin and can leave it open.
+
+#### Output Motor Pins
+- add motor only diagram from wesbite ehehe
+
+| Pin  | Function | Connections |
+| :--- | :---     | :---        |
+| OUT1 | Powers motor 1 | Connected to one side of motor 1 |
+| OUT2 | Powers motor 1 | Connected to the other side of motor 1 |
+| OUT3 | Powers motor 2 | Connected to one side of motor 2 |
+| OUT4 | Powers motor 2 | Connected to the other side of motor 2 |
+
+- add diagram connection to motors
+
+#### Direction Control Pins
+- add diagram 
+
+| Pin  | Function | Connections |
+| :--- | :---     | :---        |
+| IN1 | Controls the H-bridge switches (S... and S...) | Connected to a digital I/O pin |
+| IN2 | Controls the H-bridge switches (S... and S...) | Connected to a digital I/O pin |
+| IN3 | Controls the H-bridge switches (S... and S...) | Connected to a digital I/O pin |
+| IN4 | Controls the H-bridge switches (S... and S...) | Connected to a digital I/O pin |
+
+- diagram with arduino connections?? or nah (add this in code example????)
+
+#### Speed Control Pins
+- add diagram
+
+| Pin  | Function | Connections |
+| :--- | :---     | :---        |
+| ENA | Control the power input to (and speed of) motor 1 | Connected to a digital I/O pin with PWM output  |
+| ENB | Control the power input to (and speed of) motor 2 | Connected to a digital I/O pin with PWM output  |
+
+On the Arduino Nano, digital I/O pins 3, 5, 6, 9, 10 and 11 are capable of PWM.
+
+Make sure to disconnect the jumpers connecting 5V to ENA and ENB if you would like to use PWM to control the speed. The jumpers automatically set the enable pins to 5V (HIGH or 100% duty cycle).
+
+Note: digital pins start with the letter 'D' (put this in footnote???)
+
+
 TO DO
 
+- show connection to arduino (individual components and as a whole circuit)
+
 ## Code Examples
+
+### Direction Control
+- add code snippet
+
+### Speed Control
+- add code snippet
+
 TO DO
+- mainly analogWrite() and digitalWrite()
+- declaring pin numbers
+- dont explain serial monitor cus that should be done in arduino section
+- include snippets then link to github for actual code
+- write neat version of actual code 
