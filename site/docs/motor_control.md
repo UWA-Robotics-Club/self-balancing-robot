@@ -24,13 +24,11 @@ To control the speed and direction of the 2 DC motors, we will be using the L298
 ### H-Bridge
 We can control the direction of a DC motor by swapping the polarity of voltage applied to the motor. This is done through an electronic circuit called a H-bridge. A H-bridge consists of 4 switches which work together to control the polarity of voltage applied to the motor.
 
-- This is the picture of h-bridge with all switches open
-![alt text](http://127.0.0.1:4000/assets/circuit.png)
+![H-Bridge circuit with all switches open](http://127.0.0.1:4000/assets/motor_control/h_bridge/circuit.png)
 
-- This is the picture with S1 and S4 closed
-![alt text](http://127.0.0.1:4000/assets/circuit (1).png)
-- This is the picture with S2 and S3 closed
-![alt text](http://127.0.0.1:4000/assets/circuit (3).png)
+![H-Bridge circuit with S1 and S4 closed](http://127.0.0.1:4000/assets/motor_control/h_bridge/circuit (1).png)
+
+![H-Bridge circuit with S2 and S3 closed](http://127.0.0.1:4000/assets/motor_control/h_bridge/circuit (3).png)
 
 As you can see from the above diagrams, closing switches S1 and S4 (with S2 and S3 open) causes the polarity of voltage applied to swap, compared to closing S2 and S3 (with S1 and S4 open). This will in turn cause the motor to rotate in the opposite direction.
 
@@ -38,11 +36,11 @@ As you can see from the above diagrams, closing switches S1 and S4 (with S2 and 
 
 If you close both switches on the same side (e.g. S1 and S2), a short circuit will occur. 
 
-![alt text](http://127.0.0.1:4000/assets/circuit (2).png)
+![H-bridge short circuit](http://127.0.0.1:4000/assets/motor_control/h_bridge/circuit (2).png)
 
 Additionally, if you close both switches on the top or bottom (e.g. S1 and S3), there will be no voltage drop through the motor causing it to be stationary.
 
-![alt text](http://127.0.0.1:4000/assets/circuit (4).png)
+![H-bridge circuit with S1 and S3 closed](http://127.0.0.1:4000/assets/motor_control/h_bridge/circuit (4).png)
 
 ADD TRUTH TABLE??
 
@@ -60,11 +58,6 @@ Here we will use '1' to represent a closed switch and '0' to represent an open s
 |  1  |  1  |  0  |  0  | Short circuit |
 |  0  |  0  |  1  |  1  | Short circuit |
 
-
-DONE
-
-
-... takes 2 binary (HIGH or LOW) inputs to …
 
 ### Pulse-Width Modulation (PWM)
 Pulse-width modulation (PWM) is a way of varying the average power output of a digital signal by pulsing the digital signal on and off at different lengths of time. 
@@ -85,27 +78,26 @@ Period (T)
 
 Duty cycle
 : the percentage of 'on'-time in a period.
-: $$ \frac{T_{on}}{T} $$
-: = T_on/T
+: $$ = \frac{T_{on}}{T} $$
 
-![alt text](http://127.0.0.1:4000/assets/pwm_labelled.png)
+
+![PWM signal](http://127.0.0.1:4000/assets/motor_control/pwm/pwm_labelled.png)
 
 ----
 
 ## Example
 
-![alt text](http://127.0.0.1:4000/assets/Pulse-Width-Modulation.jpg)
+![PWM signals at different duty cycles](http://127.0.0.1:4000/assets/motor_control/pwm/Pulse-Width-Modulation.jpg)
 
 For example, at a duty cycle of 25%, only 25% of the maximum (100% duty cycle) power output will be delivered to the motor. Therefore, if a duty cycle of 100% results in the motor spinning at 100 rpm, a 50% duty cycle will turn the motor at 50 rpm.
 
 As a result, we can use PWM to control the speed of a DC motor.
 
-
 ----
 
 ### Pinout Diagram
 
-![alt text](http://127.0.0.1:4000/assets/L298N-Motor-Driver-Module-Pinout.png)
+![L298N Pinout](http://127.0.0.1:4000/assets/motor_control/pinout/L298N-Motor-Driver-Module-Pinout.png)
 
 The L298N motor driver module contains 3 power supply pins (VS, GND, VSS), 4 output (OUT) pins, 4 input (IN) pins and 2 enable (EN) pins.
 
@@ -113,7 +105,8 @@ adapted from: https://lastminuteengineers.com/l298n-dc-stepper-driver-arduino-tu
 
 #### Power Supply Pins
 
-- add power supply pinout only
+![L298N Power Supply Pinout](http://127.0.0.1:4000/assets/motor_control/pinout/l298n_pinout_power.png)
+
 
 | Pin  | Function | Connections |
 | :--- | :---     | :---        |
@@ -121,13 +114,17 @@ adapted from: https://lastminuteengineers.com/l298n-dc-stepper-driver-arduino-tu
 | GND |  Common ground pin  | Connected to the negative terminal of the power supply |
 | VSS or 5V |  Powers the logic circuit of the L298N module and accepts inputs of 5V to 7V  | Connected to positive terminal of another power supply |
 
-- add diagram with power supply connections (use 6 AA batteies in diagram if possible lmaoo)
-- add diagram with only jumper regulator
+![L298N Power Supply Connections](http://127.0.0.1:4000/assets/motor_control/pinout/power_supply_l298N.png)
+
+
+![L298N Regulators](http://127.0.0.1:4000/assets/motor_control/pinout/l298n_pinout_regulator.png)
+
 
 The L298N motor driver module also includes a regulator enable jumper which allows us to power the logic circuitry using the motor power supply. When the jumper is in place, we no longer need to connect a power supply to the VSS pin and can leave it open.
 
 #### Output Motor Pins
-- add motor only diagram from wesbite ehehe
+
+![L298N Output Pins](http://127.0.0.1:4000/assets/motor_control/pinout/l298n_pinout_output.png)
 
 | Pin  | Function | Connections |
 | :--- | :---     | :---        |
@@ -136,10 +133,12 @@ The L298N motor driver module also includes a regulator enable jumper which allo
 | OUT3 | Powers motor 2 | Connected to one side of motor 2 |
 | OUT4 | Powers motor 2 | Connected to the other side of motor 2 |
 
-- add diagram connection to motors
+![L298N Motor Connections](http://127.0.0.1:4000/assets/motor_control/pinout/output_l298N.png)
+
 
 #### Direction Control Pins
-- add diagram 
+
+![L298N Input Pins](http://127.0.0.1:4000/assets/motor_control/pinout/l298n_pinout_input.png)
 
 | Pin  | Function | Connections |
 | :--- | :---     | :---        |
@@ -148,10 +147,9 @@ The L298N motor driver module also includes a regulator enable jumper which allo
 | IN3 | Controls the H-bridge switches (S... and S...) | Connected to a digital I/O pin |
 | IN4 | Controls the H-bridge switches (S... and S...) | Connected to a digital I/O pin |
 
-- diagram with arduino connections?? or nah (add this in code example????)
-
 #### Speed Control Pins
-- add diagram
+
+![L298N Enable Pins](http://127.0.0.1:4000/assets/motor_control/pinout/l298n_pinout_en.png)
 
 | Pin  | Function | Connections |
 | :--- | :---     | :---        |
@@ -164,22 +162,44 @@ Make sure to disconnect the jumpers connecting 5V to ENA and ENB if you would li
 
 Note: digital pins start with the letter 'D' (put this in footnote???)
 
-
-TO DO
-
-- show connection to arduino (individual components and as a whole circuit)
+![L298N Connections with Motors and Arduino Nano](http://127.0.0.1:4000/assets/motor_control/pinout/l298n_connections.png)
 
 ## Code Examples
+Since the L298N is a dual H-bridge module, there are 2 separate H-bridges, allowing us to control each motor independently. In this code example, we will be controlling 'Motor 1' which is connected to OUT1 and OUT2. 
+
+Before writing the motor control code, we must first initialise any digital I/O pins we will be using as output pins (as opposed to input pins). 
+
+```c++
+// Digital I/O pins connected to the motor driver
+#define MOTOR1PIN1 10
+#define MOTOR1PIN2 9
+#define EN1 11
+
+// Initialise the following pins as output 
+pinMode(MOTOR1PIN1, OUTPUT);
+pinMode(MOTOR1PIN2, OUTPUT);
+pinMode(EN1, OUTPUT);
+```
 
 ### Direction Control
-- add code snippet
+
+As previously explained, opening and closing different switches of a H-bridge allows us to swap the direction of a motor. IN1 of the L298N controls switches S1 and S4. Applying 5V (HIGH) to IN1 closes S1 and S4, while connecting it to ground (0V) opens the switches. The same occurs with IN2 and switches S2 and S3. Therefore, to control the direction of the motor, we can set IN1 and IN2 to HIGH or LOW accordingly.
+
+```c++
+digitalWrite(MOTOR1PIN1, LOW); // Sets the output of MOTOR1PIN1 to 0V
+digitalWrite(MOTOR1PIN2, HIGH); // Sets the output of MOTORPIN2 to 5V
+```
 
 ### Speed Control
-- add code snippet
+To control the speed of the motor, we can vary the duty cycle of our PWM output. In Arduino code, this is done using the function `analogWrite()`. This function takes 2 arguments, the I/O pin and an 8-bit value (0-255), with 0 being 0% duty cycle and 255 being 100% duty cycle.
 
-TO DO
-- mainly analogWrite() and digitalWrite()
-- declaring pin numbers
-- dont explain serial monitor cus that should be done in arduino section
-- include snippets then link to github for actual code
-- write neat version of actual code 
+```c++
+analogWrite(EN1, 255); // Pick a number from 0 to 255 (255 being the fastest)
+```
+{: .highlight }
+> For access to the full motor demo code click here!
+
+- add actual link once up
+
+
+
