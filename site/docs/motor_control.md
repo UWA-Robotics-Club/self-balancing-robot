@@ -199,7 +199,7 @@ analogWrite(EN1, 255); // Pick a number from 0 to 255 (255 being the fastest)
 {: .highlight }
 > For access to the full motor demo code click here!
 
-- add actual link once up
+https://github.com/UWA-Robotics-Club/self-balancing-robot/blob/main/Motor_Control_Demo/Motor_Control_Demo.ino 
 
 
 
