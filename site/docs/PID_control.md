@@ -17,3 +17,23 @@ nav_order: 6
 1. TOC
 {:toc}
 </details>
+
+## Control Loops
+
+### On-off Control
+
+### Proportional Control
+
+
+## PID? overview
+to do
+- advantages
+- explain each term in formula
+
+## Library??
+- link to pid library i used
+- feel free to use a different method
+
+## PID Tuning
+- how to tune (adapted from utube video - link video)
+- explain what increasing each variable does (wikipedia table)

@@ -197,9 +197,8 @@ To control the speed of the motor, we can vary the duty cycle of our PWM output.
 analogWrite(EN1, 255); // Pick a number from 0 to 255 (255 being the fastest)
 ```
 {: .highlight }
-> For access to the full motor demo code click here!
+> For access to the full motor demo code click [here](https://github.com/UWA-Robotics-Club/self-balancing-robot/blob/main/Motor_Control_Demo/Motor_Control_Demo.ino)!
 
-https://github.com/UWA-Robotics-Club/self-balancing-robot/blob/main/Motor_Control_Demo/Motor_Control_Demo.ino 
 
 
 

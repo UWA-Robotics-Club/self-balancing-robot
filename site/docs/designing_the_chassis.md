@@ -17,3 +17,12 @@ nav_order: 5
 1. TOC
 {:toc}
 </details>
+
+- short intro
+- some tips?
+- fusion installation tutorial
+
+
+- laser cutting 
+- 3D printing
+- link to makers (or ask one of club members who have access)
