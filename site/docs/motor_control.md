@@ -42,8 +42,6 @@ Additionally, if you close both switches on the top or bottom (e.g. S1 and S3), 
 
 ![H-bridge circuit with S1 and S3 closed](http://127.0.0.1:4000/assets/motor_control/h_bridge/circuit (4).png)
 
-ADD TRUTH TABLE??
-
 Summary??
 
 Here we will use '1' to represent a closed switch and '0' to represent an open switch.
@@ -196,9 +194,8 @@ To control the speed of the motor, we can vary the duty cycle of our PWM output.
 ```c++
 analogWrite(EN1, 255); // Pick a number from 0 to 255 (255 being the fastest)
 ```
+
 {: .highlight }
-> For access to the full motor demo code click [here](https://github.com/UWA-Robotics-Club/self-balancing-robot/blob/main/Motor_Control_Demo/Motor_Control_Demo.ino)!
-
-
+> For access to the full motor demo code click <a href="https://github.com/UWA-Robotics-Club/self-balancing-robot/blob/main/Motor_Control_Demo/Motor_Control_Demo.ino" target="_blank">here</a>.
 
 
