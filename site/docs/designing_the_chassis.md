@@ -18,9 +18,6 @@ nav_order: 5
 {:toc}
 </details>
 
-- short intro
-- some tips? - use call outs
-
 ## CAD Software
 CAD (or Computer-Aided Design) software, such as Fusion 360 or SolidWorks, allows us to create 3D models which can then be manufactured. For the self-balancing robot, we will be using Fusion 360 to design the chassis.
 
@@ -50,14 +47,45 @@ CAD (or Computer-Aided Design) software, such as Fusion 360 or SolidWorks, allow
 
 
 ## Design Considerations
-- where to put all the parts
-- how to access battery to change it?
-- maybe include overall circuit here
-- weight distribution?
+While designing your chassis, some things to consider include:
 
+- The structural stability
+- The available materials
+- Easy access to the battery pack (to replace batteries)
+- Plan out where all your components will be located
+- Ensure that there is space for wiring
+
+![Chassis gif](http://127.0.0.1:4000/assets/designing_the_chassis/ezgif.com-gif-maker.gif)
 
 ## Laser Cutting and 3D Printing
-....     
+Once you have finished designing your chassis in Fusion 360, we can laser cut or 3D print your design!
+
+### Converting to .dxf file
+To laser cut your Fusion 360 designs, we must first convert it to a .dxf file.
+
+1. Select the sketch that you want to laser cut on the left side bar.
+2. Right click the sketch.
+3. Save as DXF.
+
+![sketch to dxf](http://127.0.0.1:4000/assets/designing_the_chassis/laser_cutting_and_3d_printing/sketch_to_dxf.png)
+
+Once you have converted your sketch to a .dxf file, save it onto a USB and take it to the laser cutter to be printed. Make sure to follow all safety procedures before laser cutting.
+
+{: .highlight }
+> If you do not have access to the laser cutter, ask the URC Project Lead available.
+
+### Converting to .stl file
+If you want to 3D print your design, we must convert your model to an .stl file.
+
+1. Select the body that you want to 3D print on the left side bar.
+2. Right click the body.
+3. Save as mesh.
+![Save as mesh](http://127.0.0.1:4000/assets/designing_the_chassis/laser_cutting_and_3d_printing/save_as_mesh.png)
+4. Choose STL (Binary) as the format and Millimeter as the unit type.
+5. Click ok to save!
+![Mesh options](http://127.0.0.1:4000/assets/designing_the_chassis/laser_cutting_and_3d_printing/mesh_options.png)
+
+Once you have an .stl file, we can open it in Ultimaker Cura.
 
 ### Ultimaker Cura
 Ultimaker Cura is an open-source slicing application for 3D printers, this will turn your CAD model into a format that the 3D printer can understand and create. 
@@ -70,3 +98,14 @@ Ultimaker Cura is an open-source slicing application for 3D printers, this will 
 4. Click on the client and follow the prompts to finish installing.
 ![Client](http://127.0.0.1:4000/assets/designing_the_chassis/cura/cura_3.png)
 
+Once Cura is installed, you can open your .stl file and slice it.
+
+![Slice](http://127.0.0.1:4000/assets/designing_the_chassis/laser_cutting_and_3d_printing/cura.png)
+
+![Save to disk](http://127.0.0.1:4000/assets/designing_the_chassis/laser_cutting_and_3d_printing/save_to_disk.png)
+
+
+{: .highlight }
+> Make sure to choose the correct options before slicing. If unsure, ask the available Project Lead.
+
+After slicing, save the .gcode file to an SD card and insert it into the 3D printer to print!
