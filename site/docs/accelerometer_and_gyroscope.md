@@ -34,7 +34,9 @@ In this self-balancing robot, we will only be using the VCC, GND, SCL, SDA, and 
 
 | Pin  | Function | Connections |
 | :--- | :---     | :---        |
-| VCC | 
+| VCC | To supply power to the module | Connected to 5V or 3V3 volts on the Arduino Nano |
+| GND | Common ground pin | Connected to GND on the Arduino Nano |
+| SCL | 
 
 
 ![MPU6050 connections](http://127.0.0.1:4000/assets/accelerometer_and_gyroscope/mpu6050_connections.png)
