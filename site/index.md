@@ -33,10 +33,15 @@ For the software, we will be writing in Arduino code (C++ with a few additional 
 
 Lastly, the chassis will be designed using CAD software (Fusion) and laser cut and/or 3D printed depending on your design.
 
-[![Alt text](../assets/Overview%20flowchart.png)]
+```mermaid
+flowchart LR
 
-- Use mermaid diagram here??
-
+A(Arduino Code) --> B(Microcontroller - Arduino Nano)
+B --> C(Motor Driver - L298N)
+B --> D(Accelerometer and Gyroscope - MPU6050)
+C --> E(DC Motors)
+D --> B
+```
 
 ---
 [Just the Docs]: https://just-the-docs.github.io/just-the-docs/

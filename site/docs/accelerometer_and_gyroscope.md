@@ -19,31 +19,25 @@ nav_order: 4
 </details>
 
 ## The MPU6050
-In this project, we will be using the MPU6050 to measure the robot's orientation and movement in real time. The MPU6050 is a small, low-cost sensor module that contains both an accelerometer and a gyroscope. 
+In this project, we will be using the MPU6050 to measure the robot's orientation and movement in real time. The MPU6050 is a small, low-cost sensor module that contains both an accelerometer and a gyroscope. The accelerometer in the MPU6050 measures acceleration in 3 dimensions (x, y and z), while the gyroscope measure angular velocity around those same dimensions. For this project, we will only be measuring the angular velocity.
 
-- edit below
-
-
-The accelerometer in the MPU6050 measures acceleration in three dimensions (x, y, and z), and the gyroscope measures angular velocity around those same three dimensions. 
-
-The combination of these sensors provides a complete measurement of the device's motion in all six degrees of freedom (3 axes of acceleration and 3 axes of rotation). 
+![3 axes on MPU6050](http://127.0.0.1:4000/assets/accelerometer_and_gyroscope/mpu6050_axes.png)
 
 
-The gyroscope measures angular velocity, or how fast the device is rotating around its three axes (x, y, and z). The accelerometer measures linear acceleration, or how fast the device is moving along those same three axes. By combining the data from both sensors, the MPU6050 is able to determine the device's orientation in space, including its tilt and movement in all three dimensions.
-
- The IMU typically includes accelerometers and gyroscopes to measure the robot's acceleration and rotation, respectively.
-
-
-TO DO
-- background on what mpu6050 is and how it works??
-
-## Interfacing? the MPU6050
-TO DO
 
 ### MPU6050 Pinout 
-TO DO
-- explanation of each pin and what it does??
-- specifically those we are using
+In this self-balancing robot, we will only be using the VCC, GND, SCL, SDA, and INT pins.
+
+![MPU6050 pinout diagram](http://127.0.0.1:4000/assets/accelerometer_and_gyroscope/mpu6050_pinout.png)
+
+
+
+| Pin  | Function | Connections |
+| :--- | :---     | :---        |
+| VCC | 
+
+
+![MPU6050 connections](http://127.0.0.1:4000/assets/accelerometer_and_gyroscope/mpu6050_connections.png)
 
 
 ## Code???
@@ -69,3 +63,6 @@ the end??
 
 
 
+If you would like to know more about the MPU6050 click here!
+
+https://lastminuteengineers.com/mpu6050-accel-gyro-arduino-tutorial/
