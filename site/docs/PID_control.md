@@ -20,6 +20,8 @@ nav_order: 6
 
 ## Control Loops
 
+- explain how motors actually effect balancing point
+
 ### On-off Control
 
 ### Proportional Control

@@ -12,7 +12,7 @@ Through this project, members will gain basic skills in CAD design, 3D printing/
 <video src="http://127.0.0.1:4000/assets/clip_1.mp4" controls="controls" style="max-width: 730px;">
 </video>
 
-- VIDEO IS NOT WORKING!!!....
+<!-- Video works if you load the site for a while...  -->
 
 ## Parts
 - Arduino Nano
@@ -43,7 +43,7 @@ C --> E(DC Motors)
 D --> B
 ```
 
----
+
 [Just the Docs]: https://just-the-docs.github.io/just-the-docs/
 [GitHub Pages]: https://docs.github.com/en/pages
 [README]: https://github.com/just-the-docs/just-the-docs-template/blob/main/README.md

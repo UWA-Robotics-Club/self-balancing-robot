@@ -31,40 +31,198 @@ In this self-balancing robot, we will only be using the VCC, GND, SCL, SDA, and 
 ![MPU6050 pinout diagram](http://127.0.0.1:4000/assets/accelerometer_and_gyroscope/mpu6050_pinout.png)
 
 
-
 | Pin  | Function | Connections |
 | :--- | :---     | :---        |
 | VCC | To supply power to the module | Connected to 5V or 3V3 volts on the Arduino Nano |
 | GND | Common ground pin | Connected to GND on the Arduino Nano |
-| SCL | 
+| SCL | Serial clock pin - ??? | Connected to A5 on the Arduino Nano |
+| SDA | Serial data pin - ??? | Connected to A4 on the Arduino Nano |
+| INT | Interrupt output pin - ??? | Connect to D2 on the Arduino Nano |
 
+https://components101.com/sensors/mpu6050-module 
 
 ![MPU6050 connections](http://127.0.0.1:4000/assets/accelerometer_and_gyroscope/mpu6050_connections.png)
 
 
-## Code???
-TO DO
+## MPU6050 Software
+For the self-balancing robot, we will need to measure the angle of inclination (or 'tilt' angle) in real time. This allows the microcontroller to determine whether or not the robot is leaning to one side and adjust accordingly.
 
-- clean up arduino code i have already written
-- give credit to those who actually wrote it lmao
+### Libraries
+There are many Arduino libraries available which allows us to measure the orientation of the MPU6050, however, we will be using the <a href="https://github.com/jrowberg/i2cdevlib" target="_blank">I2C Device Library</a>. 
 
-### Libraries??
-- list libraries used
-- tutorial on how to download them 
-- and verify that they installed (attempt to compile)
+To install the I2C Device Library:
+1. Navigate to the I2C Device Library Github repository by clicking <a href="https://github.com/jrowberg/i2cdevlib" target="_blank">here</a>.
+2. Download a .zip archive of the repository by clicking 'Code' followed by 'Download ZIP'.
+![MPU6050 connections](http://127.0.0.1:4000/assets/accelerometer_and_gyroscope/I2C_1.png)
+3. Locate your Arduino libraries folder on your device. There should be a folder called 'Arduino' under 'Documents'. Inside it will be a folder called 'Libraries'.
+4.  Find the 'Arduino/I2Cdev' and 'Arduino/MPU6050' folders in the .zip archive and copy it into your libraries folder for Arduino.
 
 ### Calibrating the MPU6050
-- code from website
+To calibrate the MPU6050, we will be applying a level of abstraction and running the Arduino code found <a href="https://github.com/UWA-Robotics-Club/self-balancing-robot/blob/main/MPU6050_Calibration/MPU6050_Calibration.ino" target="_blank">here</a>.
 
-### Reading the Angle of Inclination
+1. Download the above Arduino code onto your device.
+2. Upload the code onto the Arduino Nano.
+3. Open 'Serial Monitor'. Make sure that your Baud rate is at 115200.
+4. Follow the instructions listed in the Serial Monitor.
+5. Note down the .... These values are the offset??
+- image here (do this on laptop)
+
+These offset values calibrate the MPU6050's digital motion processor (DMP) which combines data from the accelerometer and gyroscope into angles that we can read.
+
+{: .highlight }
+> An easy way to verify that the libraries have been installed correctly is to verify the code before uploading.
+
+
+### Reading the Inclination Angle
+In order to determine the inclination angle of our self-balancing robot, we will be writing some Arduino code to interface between the Arduino Nano and MPU6050.
+
+#### Setup()
+
+The first step when writing code is to initialise all of the required libraries and variables.
+
+```c++
+#include "I2Cdev.h"
+#include "MPU6050_6Axis_MotionApps20.h"  //https://github.com/jrowberg/i2cdevlib/tree/master/Arduino/MPU6050
+
+MPU6050 mpu;
+
+// MPU control/status vars
+
+bool dmpReady = false;   // set true if DMP (digital motion processor) init was successful
+uint8_t mpuIntStatus;    // holds actual interrupt status byte from MPU 
+uint8_t devStatus;       // return status after each device operation (0 = success, !0 = error)
+uint16_t packetSize;     // expected DMP packet size (default is 42 bytes)
+uint16_t fifoCount;      // count of all bytes currently in FIFO
+uint8_t fifoBuffer[64];  // FIFO storage buffer
+
+// orientation/motion vars
+
+Quaternion q;         // [w, x, y, z]         quaternion container
+VectorFloat gravity;  // [x, y, z]            gravity vector
+float ypr[3];         // [yaw, pitch, roll]   yaw/pitch/roll container and gravity vector
+
+double input;
+
+volatile bool mpuInterrupt = false;  // indicates whether MPU interrupt pin has gone high
+```
+
+The next step is to initialise the MPU6050 and verify its connection in `setup()`. We must also load and configure the MPU6050's digital motion processor seperately. For easy debugging, we have `Serial.println()` statements which are displayed in the Serial Monitor while the code is running.
+
+```c++
+  Serial.begin(115200);
+
+  // initialize device
+  Serial.println(F("Initializing I2C devices..."));
+  mpu.initialize();
+
+  // verify connection
+  Serial.println(F("Testing device connections..."));
+  Serial.println(mpu.testConnection() ? F("MPU6050 connection successful") : F("MPU6050 connection failed"));
+
+  // load and configure the DMP
+  devStatus = mpu.dmpInitialize();
+```
+
+After initialisation, we set the offsets which were determined during calibration into our code to make the MPU readings more accurate.
+
+```c++
+   // TO DO: SUPPLY YOUR OWN OFFSETS HERE! (From MPU_Calibration.ino)
+  mpu.setXGyroOffset(-1);
+  mpu.setYGyroOffset(35);
+  mpu.setZGyroOffset(-31);
+  mpu.setZAccelOffset(1496);
+```
+
+For additional error checking, we will check that the DMP was initialised successfully. 
+If so, we can turn it on. Lastly, we must set up the interrupt detection system so that the microcontroller will be notified when data from the MPU6050 is ready to be processed.
+
+```c++
+if (devStatus == 0) {
+    // turn on the DMP, now that it's ready
+    Serial.println(F("Enabling DMP..."));
+    mpu.setDMPEnabled(true);
+
+    // enable Arduino interrupt detection
+    Serial.println(F("Enabling interrupt detection (Arduino external interrupt 0)..."));
+    attachInterrupt(0, dmpDataReady, RISING);
+
+    mpuIntStatus = mpu.getIntStatus();
+    // set our DMP Ready flag so the main loop() function knows it's okay to use it
+    Serial.println(F("DMP ready! Waiting for first interrupt..."));
+    dmpReady = true;
+
+    // get expected DMP packet size for later comparison
+    packetSize = mpu.dmpGetFIFOPacketSize();
+  }
+```
+
+#### Loop()
+Firstly, we will wait for an interrupt from the MPU to signal that a data packet is available (or if extra data packets are in the queue). 
+
+```c++
+// if programming failed, don't try to do anything
+  if (!dmpReady) return;
+  // wait for MPU interrupt or extra packet(s) available
+  while (!mpuInterrupt && fifoCount < packetSize) {
+    //no mpu data
+  }
+```
+
+Once data has been received, we must reset the interrupt flag. We then get the interrupt status of the MPU and update the size of the FIFO (first-in-first-out) data buffer.
+
+```c++
+// reset interrupt flag and get INT_STATUS byte
+mpuInterrupt = false;
+mpuIntStatus = mpu.getIntStatus();
+// get current FIFO count
+fifoCount = mpu.getFIFOCount();
+```
+
+Through this updated buffer size, we can check for overflow. 
+```c++
+// check for overflow (this should never happen unless our code is too inefficient)
+  if ((mpuIntStatus & 0x10) || fifoCount == 1024) {
+    // reset so we can continue cleanly
+    mpu.resetFIFO();
+    Serial.println(F("FIFO overflow!"));
+  }
+```
+
+Next, we can check that the DMP data is ready using the interrupt status. If it is not ready, the loop will restart. When there is data available with the correct size, we will read the data packet and update the FIFO count.
+
+Lastly, to obtain the yaw, pitch and roll, we need to get the quarternion and gravity value first. Then use the library function `mpu.dmpGetYawPitchRoll()` to read the values into the `ypr[]` array. The inclination angle will then be the pitch, which is `ypr[1]`. This value is converted from radians to degrees and is stored in the variable `input`.
+
+```c++
+// otherwise, check for DMP data ready interrupt (this should happen frequently)
+else if (mpuIntStatus & 0x02) {
+    // wait for correct available data length, should be a VERY short wait
+    while (fifoCount < packetSize) fifoCount = mpu.getFIFOCount();
+    // read a packet from FIFO
+    mpu.getFIFOBytes(fifoBuffer, packetSize);
+    // track FIFO count here in case there is > 1 packet available
+    // (this lets us immediately read more without waiting for an interrupt)
+    fifoCount -= packetSize;
+    mpu.dmpGetQuaternion(&q, fifoBuffer);       //get value for q
+    mpu.dmpGetGravity(&gravity, &q);            //get value for gravity
+    mpu.dmpGetYawPitchRoll(ypr, &q, &gravity);  //get value for ypr
+    input = ypr[1] * 180 / M_PI + 180;          // Input is pitch in degrees
+
+    Serial.println(input);
+  }
+```
+
+
+https://mjwhite8119.github.io/Robots/mpu6050#:~:text=The%20next%20step%20is%20to,firmware%20in%20order%20to%20run.
+
 - my code which i wrote (adapted from website)
 - 
 
+- to do:  add explaantion about pitch, yaw and roll and edittttt
+
+---
 
 the end??
 
 
-
-If you would like to know more about the MPU6050 click here!
-
-https://lastminuteengineers.com/mpu6050-accel-gyro-arduino-tutorial/
+{: .highlight }
+> If you would like to know more about how the MPU6050 works click <a href="https://lastminuteengineers.com/mpu6050-accel-gyro-arduino-tutorial/" target="_blank">here</a>!
