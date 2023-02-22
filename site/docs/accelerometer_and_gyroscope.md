@@ -218,6 +218,7 @@ https://mjwhite8119.github.io/Robots/mpu6050#:~:text=The%20next%20step%20is%20to
 - 
 
 - to do:  add explaantion about pitch, yaw and roll and edittttt
+- add link to actual code and add to github
 
 ---
 
