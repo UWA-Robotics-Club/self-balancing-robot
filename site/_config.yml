@@ -21,7 +21,7 @@ url: https://just-the-docs.github.io
 
 # Aux links for the upper right navigation
 aux_links:
-  "The Self-Balanacing Robot on GitHub":
+  "The Self-Balancing Robot on GitHub":
     - "//github.com/UWA-Robotics-Club/self-balancing-robot/"
 
 # Makes Aux links open in a new tab. Default is false
