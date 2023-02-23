@@ -69,10 +69,9 @@ To calibrate the MPU6050, we will be applying a level of abstraction and running
 4. Follow the instructions listed in the Serial Monitor.
 ![Start calibrating](http://127.0.0.1:4000/assets/accelerometer_and_gyroscope/mpu6050_calibration_1.png)
 ![Calibrating](http://127.0.0.1:4000/assets/accelerometer_and_gyroscope/mpu6050_calibration_2.png)
-5. Note down the .... These values are the offset??
-- image here (do this on laptop)
+5. Note down the offset values for `acelZ`, `gyroX`, `gyroY` and `gyroZ`.
 ![Offsets from calibration](http://127.0.0.1:4000/assets/accelerometer_and_gyroscope/mpu6050_calibration_3.png)
-
+<!-- Fix above image to have correct spelling -->
 
 These offset values calibrate the MPU6050's digital motion processor (DMP) which combines data from the accelerometer and gyroscope into angles that we can read.
 
