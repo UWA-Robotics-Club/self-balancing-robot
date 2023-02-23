@@ -135,7 +135,7 @@ void loop() {
     Serial.print(gy_offset); 
     Serial.print("\t");
     Serial.println(gz_offset); 
-    Serial.println("\nData is printed as: acelX acelY acelZ giroX giroY giroZ");
+    Serial.println("\nData is printed as: acelX acelY acelZ gyroX gyroY gyroZ");
     Serial.println("Check that your sensor readings are close to 0 0 16384 0 0 0");
     Serial.println("If calibration was succesful write down your offsets so you can set them in your projects using something similar to mpu.setXAccelOffset(youroffset)");
     while (1);
