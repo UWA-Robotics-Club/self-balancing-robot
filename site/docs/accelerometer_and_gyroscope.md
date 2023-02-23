@@ -67,8 +67,12 @@ To calibrate the MPU6050, we will be applying a level of abstraction and running
 2. Upload the code onto the Arduino Nano.
 3. Open 'Serial Monitor'. Make sure that your Baud rate is at 115200.
 4. Follow the instructions listed in the Serial Monitor.
+![Start calibrating](http://127.0.0.1:4000/assets/accelerometer_and_gyroscope/mpu6050_calibration_1.png)
+![Calibrating](http://127.0.0.1:4000/assets/accelerometer_and_gyroscope/mpu6050_calibration_2.png)
 5. Note down the .... These values are the offset??
 - image here (do this on laptop)
+![Offsets from calibration](http://127.0.0.1:4000/assets/accelerometer_and_gyroscope/mpu6050_calibration_3.png)
+
 
 These offset values calibrate the MPU6050's digital motion processor (DMP) which combines data from the accelerometer and gyroscope into angles that we can read.
 
