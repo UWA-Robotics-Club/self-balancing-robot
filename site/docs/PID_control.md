@@ -38,7 +38,11 @@ The on-off controller is the most basic type of control system. For the self-bal
 2. If the robot is tilting backward, rotate the motors backwards.
 3. If it is balanced, do nothing.
 
-During this control loop, the motor will either be off or stay at a constant speed (which can be chosen arbitrarily). The on-off controller does not take the amount of tilt or speed at which the robot is falling into consideration, only the direction. Because of this, it is unlikely to remain balanced.
+During this control loop, the motor will either be off or stay at a constant speed (which can be chosen arbitrarily). The on-off controller does not take the amount of tilt or speed at which the robot is falling into consideration, only the direction.
+
+{: .highlight }
+> Try to write your own on-off controller!
+
 
 ### Proportional Control
 Another possible control system is proportional control. In proportional control, we take the difference between the current angle and desired angle into consideration when setting the speed of the motors. 
