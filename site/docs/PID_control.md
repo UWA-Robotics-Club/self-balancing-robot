@@ -57,7 +57,7 @@ One thing to consider with this method is the maximum allowed input for the moto
 Using the proportional controller, it is possible to tune (by modifying the value of $K_p$) the robot so that it is mostly able to stay balance with little interference. However, this still does take how fast the robot is falling into account.
 
 ## PID Control
-A more advance type of feedback control is PID control. 
+A more advance type of feedback control is PID control. Instead
 
 
 
