@@ -19,30 +19,30 @@ nav_order: 4
 </details>
 
 ## The MPU6050
-In this project, we will be using the MPU6050 to measure the robot's orientation and movement in real time. The MPU6050 is a small, low-cost sensor module that contains both an accelerometer and a gyroscope. The accelerometer in the MPU6050 measures acceleration in 3 dimensions (x, y and z), while the gyroscope measure angular velocity around those same dimensions. For this project, we will only be measuring the angular velocity.
+In this project, we will be using the MPU6050 to measure the robot's orientation and movement in real time. The MPU6050 is a small, low-cost sensor module that contains both an accelerometer and a gyroscope. The accelerometer in the MPU6050 measures acceleration in 3 dimensions (x, y and z), while the gyroscope measure angular velocity around those same dimensions. 
 
-![3 axes on MPU6050](http://127.0.0.1:4000/assets/accelerometer_and_gyroscope/mpu6050_axes.png)
-
-
+![3 axes on MPU6050](http://127.0.0.1:4000/assets/accelerometer_and_gyroscope/mpu_ypr.png)
 
 ### MPU6050 Pinout 
 In this self-balancing robot, we will only be using the VCC, GND, SCL, SDA, and INT pins.
 
 ![MPU6050 pinout diagram](http://127.0.0.1:4000/assets/accelerometer_and_gyroscope/mpu6050_pinout.png)
 
-
 | Pin  | Function | Connections |
 | :--- | :---     | :---        |
-| VCC | To supply power to the module | Connected to 5V or 3V3 volts on the Arduino Nano |
+| VCC | To supply power to the module | Connected to 5V or 3V3 pins on the Arduino Nano |
 | GND | Common ground pin | Connected to GND on the Arduino Nano |
-| SCL | Serial clock pin - ??? | Connected to A5 on the Arduino Nano |
-| SDA | Serial data pin - ??? | Connected to A4 on the Arduino Nano |
-| INT | Interrupt output pin - ??? | Connect to D2 on the Arduino Nano |
+| SCL | Serial clock pin - provides the clock pulse for I2C Communication | Connected to A5 on the Arduino Nano |
+| SDA | Serial data pin - to transfer data through I2C communication | Connected to A4 on the Arduino Nano |
+| INT | Interrupt output pin - to indicate that data is available for the Arduino Nano to read. | Connect to D2 on the Arduino Nano |
 
-https://components101.com/sensors/mpu6050-module 
+<!-- https://components101.com/sensors/mpu6050-module -->
 
 ![MPU6050 connections](http://127.0.0.1:4000/assets/accelerometer_and_gyroscope/mpu6050_connections.png)
 
+{: .highlight }
+> The MPU6050 module contains a 3.3V regulator which allows us to connect it to either the 5V or 3V3 pins on the Arduino Nano.
+![MPU6050 power regulator](http://127.0.0.1:4000/assets/accelerometer_and_gyroscope/mpu6050_regulator.png)
 
 ## MPU6050 Software
 For the self-balancing robot, we will need to measure the angle of inclination (or 'tilt' angle) in real time. This allows the microcontroller to determine whether or not the robot is leaning to one side and adjust accordingly.
@@ -56,6 +56,9 @@ To install the I2C Device Library:
 ![MPU6050 connections](http://127.0.0.1:4000/assets/accelerometer_and_gyroscope/I2C_1.png)
 3. Locate your Arduino libraries folder on your device. There should be a folder called 'Arduino' under 'Documents'. Inside it will be a folder called 'Libraries'.
 4.  Find the 'Arduino/I2Cdev' and 'Arduino/MPU6050' folders in the .zip archive and copy it into your libraries folder for Arduino.
+
+{: .highlight }
+> For more information on I2C communication, click <a href="https://www.circuitbasics.com/basics-of-the-i2c-communication-protocol/" target="_blank">here</a>!.
 
 ### Calibrating the MPU6050
 To calibrate the MPU6050, we will be applying a level of abstraction and running the Arduino code found <a href="https://github.com/UWA-Robotics-Club/self-balancing-robot/blob/main/MPU6050_Calibration/MPU6050_Calibration.ino" target="_blank">here</a>.
@@ -134,17 +137,18 @@ After initialisation, we set the offsets which were determined during calibratio
 ```
 
 For additional error checking, we will check that the DMP was initialised successfully. 
-If so, we can turn it on. Lastly, we must set up the interrupt detection system so that the microcontroller will be notified when data from the MPU6050 is ready to be processed.
+If so, we can turn it on. Lastly, we must set up the interrupt detection system so that the microcontroller will be notified when data from the MPU6050 is ready to be processed. To do this, we can use the function `attachInterrupt(pin, ISR, mode)`. In the below code snippet, `0` refers to the interrupt pin number (INT0 corresponding to D2), while `dmpDataReady` is a helper function which sets the interrupt flag to `TRUE`. `RISING` means that an interrupt will be triggered when the pin goes from low to high.
 
 ```c++
-if (devStatus == 0) {
+// make sure it worked (returns 0 if so)
+  if (devStatus == 0) {
     // turn on the DMP, now that it's ready
     Serial.println(F("Enabling DMP..."));
     mpu.setDMPEnabled(true);
 
     // enable Arduino interrupt detection
     Serial.println(F("Enabling interrupt detection (Arduino external interrupt 0)..."));
-    attachInterrupt(0, dmpDataReady, RISING);
+    attachInterrupt(0, dmpDataReady, RISING); // INT0 = D2
 
     mpuIntStatus = mpu.getIntStatus();
     // set our DMP Ready flag so the main loop() function knows it's okay to use it
@@ -190,7 +194,7 @@ Through this updated buffer size, we can check for overflow.
 
 Next, we can check that the DMP data is ready using the interrupt status. If it is not ready, the loop will restart. When there is data available with the correct size, we will read the data packet and update the FIFO count.
 
-Lastly, to obtain the yaw, pitch and roll, we need to get the quarternion and gravity value first. Then use the library function `mpu.dmpGetYawPitchRoll()` to read the values into the `ypr[]` array. The inclination angle will then be the pitch, which is `ypr[1]`. This value is converted from radians to degrees and is stored in the variable `input`.
+Lastly, to obtain the yaw, pitch and roll, we need to get the quarternion and gravity value first. Then use the library function `mpu.dmpGetYawPitchRoll()` to read the values into the `ypr[]` array. The inclination angle will then be the pitch (rotation along the y-axis), which is `ypr[1]`. This value is converted from radians to degrees and is stored in the variable `input`.
 
 ```c++
 // otherwise, check for DMP data ready interrupt (this should happen frequently)
@@ -211,19 +215,8 @@ else if (mpuIntStatus & 0x02) {
   }
 ```
 
-
-https://mjwhite8119.github.io/Robots/mpu6050#:~:text=The%20next%20step%20is%20to,firmware%20in%20order%20to%20run.
-
-- my code which i wrote (adapted from website)
-- 
-
-- to do:  add explaantion about pitch, yaw and roll and edittttt
-- add link to actual code and add to github
-
----
-
-the end??
-
-
 {: .highlight }
-> If you would like to know more about how the MPU6050 works click <a href="https://lastminuteengineers.com/mpu6050-accel-gyro-arduino-tutorial/" target="_blank">here</a>!
+> Access to the full MPU6050 demo code can be found <a href="https://github.com/UWA-Robotics-Club/self-balancing-robot/blob/main/MPU6050_Reading_Angles/MPU6050_Reading_Angles.ino" and target="_blank">here</a> and to read more about the MPU6050 click <a href="https://lastminuteengineers.com/mpu6050-accel-gyro-arduino-tutorial/" target="_blank">here</a>!
+
+
+<!-- https://mjwhite8119.github.io/Robots/mpu6050#:~:text=The%20next%20step%20is%20to,firmware%20in%20order%20to%20run. -->
