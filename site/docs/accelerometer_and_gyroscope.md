@@ -70,7 +70,7 @@ To calibrate the MPU6050, we will be applying a level of abstraction and running
 ![Start calibrating](http://127.0.0.1:4000/assets/accelerometer_and_gyroscope/mpu6050_calibration_1.png)
 ![Calibrating](http://127.0.0.1:4000/assets/accelerometer_and_gyroscope/mpu6050_calibration_2.png)
 5. Note down the offset values for `acelZ`, `gyroX`, `gyroY` and `gyroZ`.
-![Offsets from calibration](http://127.0.0.1:4000/assets/accelerometer_and_gyroscope/mpu6050_calibration_3.png)
+![Offsets from calibration](http://127.0.0.1:4000/assets/accelerometer_and_gyroscope/mpu_calibration_3.png)
 <!-- Fix above image to have correct spelling -->
 
 These offset values calibrate the MPU6050's digital motion processor (DMP) which combines data from the accelerometer and gyroscope into angles that we can read.
@@ -218,9 +218,9 @@ else if (mpuIntStatus & 0x02) {
   }
 ```
 
-When the self-balancing robot is upright (i.e. the MPU6050 module is laying flat with X, Y and Z symbols visible), the `input` value should be equal to 180??
+When the self-balancing robot is upright (i.e. the MPU6050 module is laying flat with X, Y and Z symbols visible), the `input` value should be equal to approximately 180.
 
-- TO DO: add image here of it actually wokring
+![Reading angles](http://127.0.0.1:4000/assets/accelerometer_and_gyroscope/reading_angles.png)
 
 {: .highlight }
 > Access to the full MPU6050 demo code can be found <a href="https://github.com/UWA-Robotics-Club/self-balancing-robot/blob/main/MPU6050_Reading_Angles/MPU6050_Reading_Angles.ino" and target="_blank">here</a> and to read more about the MPU6050 click <a href="https://lastminuteengineers.com/mpu6050-accel-gyro-arduino-tutorial/" target="_blank">here</a>!
