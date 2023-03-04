@@ -27,7 +27,7 @@ To maintains its balance, the robot will:
 1. Determine the inclination angle from the MPU6050.
 2. If it is tilted/falling, run the DC motors to compensate. For example, if the robot is falling forwards, the motors should go forward, shifting the robot to an upright position.
 ![Tilting diagram](http://127.0.0.1:4000/assets/PID_control/tilting_diagram.png)
-3. This will continue in a closed loop. keeping the robot balanced.
+3. This will continue in a closed loop, keeping the robot balanced.
 
 How the motors will compensate for the tilting depends on the type of control system we choose to use.
 
@@ -57,15 +57,21 @@ One thing to consider with this method is the maximum allowed input for the moto
 Using the proportional controller, it is possible to tune (by modifying the value of $K_p$) the robot so that it is mostly able to stay balance with little interference. However, this still does take how fast the robot is falling into account.
 
 ## PID Control
-A more advance type of feedback control is PID control. Instead
+A more advance type of feedback control is PID control. PID control or Proportional-Integral-Derivative control not only takes the current error into consideration, it also considers past errors and future errors (based on the current rate of change). 
+
+![PID formula](http://127.0.0.1:4000/assets/PID_control/pid-loop-schematic-structure.png)
+
+The proportional term consists of $$K_p e(t)$$ where $$e(t)$$ is the error term. This term has the largest effect on the output of the PID loop. A $$K_p$$ is chosen so that the desired output is reached as quickly as possible but without overshooting. Therefore, the output will approach the desired value but never surpass it. 
+
+(ADD IMAGE OF GRAPH!!)
+
+The integral term consists of $$K_i \int_{0}^{t} e(t) dt$$ and is used so that the desired value is reached quicker (which is important for a self-balancing robot). However, it causes overshooting to occur.
+
+(ADD ANOTHER IMAGE??)
+
+The derivative term is $$K_d \frac{d}{dt} e(t)$$. It increases the response
 
 
-
-PID control or Proportional-Integral-Derivative control not only takes the current error into consideration 
-
-
-to do
-- advantages
 - explain each term in formula
 
 ### Integral
@@ -82,7 +88,7 @@ to do - overall
 
 
 ## Arduino PID Library
-In this project, we will be using a library to perform our PID calculations.
+In this project, we will be using a library to perform our PID calculations. To view the documentation for the PID library, click <a href="https://playground.arduino.cc/Code/PIDLibrary/" and target="_blank">here</a>
 
 To install the PID library:
 1. Click <a href="https://github.com/br3ttb/Arduino-PID-Library" and target="_blank">here</a> to access the library on GitHub.
@@ -141,14 +147,3 @@ Manually tuning your self-balancing robot:
 " target="_blank">here</a>!
 
 <!-- Embed the youtube video if possible -->
-
-- explain what increasing each variable does (wikipedia table)
-
-
-- attempt all 3 types of control cus y not :)\
-
-
-
-https://playground.arduino.cc/Code/PIDLibrary/ 
-
-documentation for pid library
