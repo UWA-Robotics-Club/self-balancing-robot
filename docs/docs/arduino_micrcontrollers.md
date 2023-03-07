@@ -23,7 +23,7 @@ The Arduino Nano is a small, low-cost microcontroller board using the ATmega328P
 
 
 ### Pinout Diagram
-![Pinout diagram](../../assets/arduino_microcontrollers/Arduino-nano-pinout.png)
+![Pinout diagram](https://uwa-robotics-club.github.io/self-balancing-robot/assets/arduino_microcontrollers/Arduino-nano-pinout.png)
 
 ## Arduino Integrated Environment (IDE)
 The Arduino Integrated Environment or Arduino Software (IDE) is an open-source platform containing a text editor for writing code, a message area, a text console, a tool bar with buttons for common functions and a series of menus. It allows us to write programs for an Arduino board and easily upload it.
@@ -35,40 +35,40 @@ The Arduino Integrated Environment or Arduino Software (IDE) is an open-source p
 ### Installation
 To install the Arduino IDE 2.0:
 1. Click <a href="https://www.arduino.cc/en/software#future-version-of-the-arduino-ide" and target="_blank">here</a> to access the download page for Arduino IDE 2.0.  
-![Download page](../../assets/arduino_microcontrollers/download_1.png)
+![Download page](https://uwa-robotics-club.github.io/self-balancing-robot/assets/arduino_microcontrollers/download_1.png)
 2. Click the "Just Download" button to download for free.
-![Just download](../../assets/arduino_microcontrollers/download_2.png)
+![Just download](https://uwa-robotics-club.github.io/self-balancing-robot/assets/arduino_microcontrollers/download_2.png)
 3. Run the client and follow the prompts to finish installing.
-![Just download](../../assets/arduino_microcontrollers/download_3.png)
+![Just download](https://uwa-robotics-club.github.io/self-balancing-robot/assets/arduino_microcontrollers/download_3.png)
 
 ### Uploading Programs
 To upload an Arduino program onto the Nano (using the Arduino IDE):
 1. Connect the Arduino Nano to your device using a USB cable.
 2. Choose the correct COM port and Arduino board.
-![COM port and board](../../assets/arduino_microcontrollers/upload_program_1.png)
-![COM port and board](../../assets/arduino_microcontrollers/upload_program_2.png)
+![COM port and board](https://uwa-robotics-club.github.io/self-balancing-robot/assets/arduino_microcontrollers/upload_program_1.png)
+![COM port and board](https://uwa-robotics-club.github.io/self-balancing-robot/assets/arduino_microcontrollers/upload_program_2.png)
 3. Click on the upload button to upload your program onto the Arduino board. This will also verify that your syntax is correct.
-![Upload button](../../assets/arduino_microcontrollers/upload_program_3.png)
+![Upload button](https://uwa-robotics-club.github.io/self-balancing-robot/assets/arduino_microcontrollers/upload_program_3.png)
 
 {: .highlight }
 > Tip: If your code fails to upload try changing the bootloader to the old bootloader 
-![Upload button](../../assets/arduino_microcontrollers/upload_program_4.png)
+![Upload button](https://uwa-robotics-club.github.io/self-balancing-robot/assets/arduino_microcontrollers/upload_program_4.png)
 
 For easier debugging, "Show verbose output" during compile and upload. This allows you to see any errors that occur while compiling and uploading.
-![File to Preferences](../../assets/arduino_microcontrollers/ide_tips_1.png)
-![Show verbose output](../../assets/arduino_microcontrollers/ide_tips_2.png)
+![File to Preferences](https://uwa-robotics-club.github.io/self-balancing-robot/assets/arduino_microcontrollers/ide_tips_1.png)
+![Show verbose output](https://uwa-robotics-club.github.io/self-balancing-robot/assets/arduino_microcontrollers/ide_tips_2.png)
 
 ### Features
 The Arduino IDE provides a 'Serial Monitor' where we can easily print messages such as the output from a sensor. If your message contains only numerical values, you can also use the 'Serial Plotter' to graph those values.
-![Serial monitor and plotter](../../assets/arduino_microcontrollers/features_1.png)
+![Serial monitor and plotter](https://uwa-robotics-club.github.io/self-balancing-robot/assets/arduino_microcontrollers/features_1.png)
 
 The Arduino IDE also features a debugger which allows you to set breakpoints and track the values of your variables while your program is running.
-![Debugger](../../assets/arduino_microcontrollers/features_2.png)
+![Debugger](https://uwa-robotics-club.github.io/self-balancing-robot/assets/arduino_microcontrollers/features_2.png)
 
 
 ## Arduino Code
 Upon startup, the Arduino IDE will create a new sketch (programs written using Arduino software) with the basic structure of a sketch already in place. This basic structure includes two main functions: setup() and loop().
-![structure](../../assets/arduino_microcontrollers/structure.png)
+![structure](https://uwa-robotics-club.github.io/self-balancing-robot/assets/arduino_microcontrollers/structure.png)
 
 ### Setup() and Loop()
 The special function `setup()` is run once at the start of every program. 

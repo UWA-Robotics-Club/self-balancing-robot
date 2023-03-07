@@ -26,7 +26,7 @@ The aim of a feedback control system is to keep the controlled variable close to
 To maintains its balance, the robot will:
 1. Determine the inclination angle from the MPU6050.
 2. If it is tilted/falling, run the DC motors to compensate. For example, if the robot is falling forwards, the motors should go forward, shifting the robot to an upright position.
-![Tilting diagram](../../assets/PID_control/tilting_diagram.png)
+![Tilting diagram](https://uwa-robotics-club.github.io/self-balancing-robot/assets/PID_control/tilting_diagram.png)
 3. This will continue in a closed loop, keeping the robot balanced.
 
 How the motors will compensate for the tilting depends on the type of control system we choose to use.
@@ -59,7 +59,7 @@ Using the proportional controller, it is possible to tune (by modifying the valu
 ## PID Control
 A more advance type of feedback control is PID control. PID control or Proportional-Integral-Derivative control not only takes the current error into consideration, it also considers past errors and future errors (based on the current rate of change). 
 
-![PID formula](../../assets/PID_control/pid-loop-schematic-structure.png)
+![PID formula](https://uwa-robotics-club.github.io/self-balancing-robot/assets/PID_control/pid-loop-schematic-structure.png)
 
 The proportional term consists of $$K_p e(t)$$ where $$e(t)$$ is the error term. This term has the largest effect on the output of the PID loop. A $$K_p$$ is chosen so that the desired output is reached as quickly as possible but without overshooting. Therefore, the output will approach the desired value but never surpass it. Unfortunately, this means that the controller may reach equilibrium without ever reaching the desired output. This difference is called the steady state error (error while in equilibrium).
 
@@ -69,7 +69,7 @@ The derivative term is $$K_d \frac{d}{dt} e(t)$$. It increases the response time
 
 All in all, the combination of the proportional, integral and derivative terms allows the self-balancing robot to accurately correct its orientation in a reasonable amount of time.
 
-![PID animation](../../assets/PID_control/PID_Compensation_Animated.gif)
+![PID animation](https://uwa-robotics-club.github.io/self-balancing-robot/assets/PID_control/PID_Compensation_Animated.gif)
 
 
 ## Arduino PID Library
@@ -78,7 +78,7 @@ In this project, we will be using a library to perform our PID calculations. To 
 To install the PID library:
 1. Click <a href="https://github.com/br3ttb/Arduino-PID-Library" and target="_blank">here</a> to access the library on GitHub.
 2. Click on 'Code' and then 'Download ZIP' to download the .zip archive.
-![Download library](../../assets/PID_control/pid_library_1.png)
+![Download library](https://uwa-robotics-club.github.io/self-balancing-robot/assets/PID_control/pid_library_1.png)
 3. Locate your Arduino libraries folder on your device. There should be a folder called 'Arduino' under 'Documents'. Inside it will be a folder called 'Libraries'.
 4. Unzip the archive's contents into your libraries folder.
 
