@@ -101,8 +101,6 @@ As a result, we can use PWM to control the speed of a DC motor.
 
 The L298N motor driver module contains 3 power supply pins (VS, GND, VSS), 4 output (OUT) pins, 4 input (IN) pins and 2 enable (EN) pins.
 
-adapted from: https://lastminuteengineers.com/l298n-dc-stepper-driver-arduino-tutorial/ 
-
 #### Power Supply Pins
 
 ![L298N Power Supply Pinout](https://uwa-robotics-club.github.io/self-balancing-robot/assets/motor_control/pinout/l298n_pinout_power.png)
@@ -142,10 +140,10 @@ The L298N motor driver module also includes a regulator enable jumper which allo
 
 | Pin  | Function | Connections |
 | :--- | :---     | :---        |
-| IN1 | Controls the H-bridge switches (S... and S...) | Connected to a digital I/O pin |
-| IN2 | Controls the H-bridge switches (S... and S...) | Connected to a digital I/O pin |
-| IN3 | Controls the H-bridge switches (S... and S...) | Connected to a digital I/O pin |
-| IN4 | Controls the H-bridge switches (S... and S...) | Connected to a digital I/O pin |
+| IN1 | Controls the first H-bridge's switches (S1 and S4) | Connected to a digital I/O pin |
+| IN2 | Controls the first H-bridge's switches (S2 and S3) | Connected to a digital I/O pin |
+| IN3 | Controls the second H-bridge's switches (S1 and S4) | Connected to a digital I/O pin |
+| IN4 | Controls the second H-bridge's switches (S2 and S3) | Connected to a digital I/O pin |
 
 #### Speed Control Pins
 
@@ -156,11 +154,9 @@ The L298N motor driver module also includes a regulator enable jumper which allo
 | ENA | Control the power input to (and speed of) motor 1 | Connected to a digital I/O pin with PWM output  |
 | ENB | Control the power input to (and speed of) motor 2 | Connected to a digital I/O pin with PWM output  |
 
-On the Arduino Nano, digital I/O pins 3, 5, 6, 9, 10 and 11 are capable of PWM.
+On the Arduino Nano, digital I/O pins 3, 5, 6, 9, 10 and 11 are capable of PWM (e.g. D3, D5, etc.).
 
 Make sure to disconnect the jumpers connecting 5V to ENA and ENB if you would like to use PWM to control the speed. The jumpers automatically set the enable pins to 5V (HIGH or 100% duty cycle).
-
-Note: digital pins start with the letter 'D' (put this in footnote???)
 
 ![L298N Connections with Motors and Arduino Nano](https://uwa-robotics-club.github.io/self-balancing-robot/assets/motor_control/pinout/l298n_connections.png)
 
