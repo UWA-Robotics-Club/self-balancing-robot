@@ -25,22 +25,22 @@ CAD (or Computer-Aided Design) software, such as Fusion 360 or SolidWorks, allow
 ### Fusion 360
 1. To install Fusion 360 (Education License), click <a href="https://www.autodesk.com/campaigns/education/fusion-360" target="_blank">here</a>. This will take you to the Fusion 360 educational site.
 2. Click 'Get Fusion 360'.
-![Get Fusion 360](http://127.0.0.1:4000/assets/designing_the_chassis/fusion/fusion_1.png)
+![Get Fusion 360](../../assets/designing_the_chassis/fusion/fusion_1.png)
 3. Then click 'Sign in', located in the top right corner.
-![Sign in](http://127.0.0.1:4000/assets/designing_the_chassis/fusion/fusion_5.png)
+![Sign in](../../assets/designing_the_chassis/fusion/fusion_5.png)
 4. If you don't already have an Autodesk account, create a new account. Otherwise, sign in.
-![Sign in](http://127.0.0.1:4000/assets/designing_the_chassis/fusion/fusion_6.png)
-![Create new account](http://127.0.0.1:4000/assets/designing_the_chassis/fusion/fusion_7.png)
+![Sign in](../../assets/designing_the_chassis/fusion/fusion_6.png)
+![Create new account](../../assets/designing_the_chassis/fusion/fusion_7.png)
 5. Once you are signed in, click 'Get Educational Access'.
-![Get Educational Access](http://127.0.0.1:4000/assets/designing_the_chassis/fusion/fusion_3.png)
+![Get Educational Access](../../assets/designing_the_chassis/fusion/fusion_3.png)
 6. Fill out your details and confirm.
-![Fill out details](http://127.0.0.1:4000/assets/designing_the_chassis/fusion/fusion_4.png)
+![Fill out details](../../assets/designing_the_chassis/fusion/fusion_4.png)
 7. You should now have educational access!
-![Confirmed](http://127.0.0.1:4000/assets/designing_the_chassis/fusion/fusion_8.png)
+![Confirmed](../../assets/designing_the_chassis/fusion/fusion_8.png)
 8. To download Fusion 360, click 'Get product' then 'Access'. This will take you to a separate page where the client will download automatically. 
-![Get product](http://127.0.0.1:4000/assets/designing_the_chassis/fusion/fusion_9.png)
+![Get product](../../assets/designing_the_chassis/fusion/fusion_9.png)
 9. Click on the client to finish installing.
-![Client.exe](http://127.0.0.1:4000/assets/designing_the_chassis/fusion/fusion_10.png)
+![Client.exe](../../assets/designing_the_chassis/fusion/fusion_10.png)
 
 {: .highlight }
 > Tip: To check that the Fusion you have installed is the education version, run the application. It should say 'Autodesk Fusion 360 (Educational License)' in the top left corner.
@@ -55,7 +55,7 @@ While designing your chassis, some things to consider include:
 - Plan out where all your components will be located
 - Ensure that there is space for wiring
 
-![Chassis gif](http://127.0.0.1:4000/assets/designing_the_chassis/ezgif.com-gif-maker.gif)
+![Chassis gif](../../assets/designing_the_chassis/ezgif.com-gif-maker.gif)
 
 ## Laser Cutting and 3D Printing
 Once you have finished designing your chassis in Fusion 360, we can laser cut or 3D print your design!
@@ -67,7 +67,7 @@ To laser cut your Fusion 360 designs, we must first convert it to a .dxf file.
 2. Right click the sketch.
 3. Save as DXF.
 
-![sketch to dxf](http://127.0.0.1:4000/assets/designing_the_chassis/laser_cutting_and_3d_printing/sketch_to_dxf.png)
+![sketch to dxf](../../assets/designing_the_chassis/laser_cutting_and_3d_printing/sketch_to_dxf.png)
 
 Once you have converted your sketch to a .dxf file, save it onto a USB and take it to the laser cutter to be printed. Make sure to follow all safety procedures before laser cutting.
 
@@ -80,10 +80,10 @@ If you want to 3D print your design, we must convert your model to an .stl file.
 1. Select the body that you want to 3D print on the left side bar.
 2. Right click the body.
 3. Save as mesh.
-![Save as mesh](http://127.0.0.1:4000/assets/designing_the_chassis/laser_cutting_and_3d_printing/save_as_mesh.png)
+![Save as mesh](../../assets/designing_the_chassis/laser_cutting_and_3d_printing/save_as_mesh.png)
 4. Choose STL (Binary) as the format and Millimeter as the unit type.
 5. Click ok to save!
-![Mesh options](http://127.0.0.1:4000/assets/designing_the_chassis/laser_cutting_and_3d_printing/mesh_options.png)
+![Mesh options](../../assets/designing_the_chassis/laser_cutting_and_3d_printing/mesh_options.png)
 
 Once you have an .stl file, we can open it in Ultimaker Cura.
 
@@ -92,17 +92,17 @@ Ultimaker Cura is an open-source slicing application for 3D printers, this will 
 
 1. To install Ultimaker Cura, click <a href="https://ultimaker.com/software/ultimaker-cura" target="_blank">here</a>.
 2. Then click on 'Download for free'.
-![Download for free](http://127.0.0.1:4000/assets/designing_the_chassis/cura/cura_1.png)
+![Download for free](../../assets/designing_the_chassis/cura/cura_1.png)
 3. Choose the correct operating system for your device. This will automatically install the client.
-![Choose OS](http://127.0.0.1:4000/assets/designing_the_chassis/cura/cura_2.png)
+![Choose OS](../../assets/designing_the_chassis/cura/cura_2.png)
 4. Click on the client and follow the prompts to finish installing.
-![Client](http://127.0.0.1:4000/assets/designing_the_chassis/cura/cura_3.png)
+![Client](../../assets/designing_the_chassis/cura/cura_3.png)
 
 Once Cura is installed, you can open your .stl file and slice it.
 
-![Slice](http://127.0.0.1:4000/assets/designing_the_chassis/laser_cutting_and_3d_printing/cura.png)
+![Slice](../../assets/designing_the_chassis/laser_cutting_and_3d_printing/cura.png)
 
-![Save to disk](http://127.0.0.1:4000/assets/designing_the_chassis/laser_cutting_and_3d_printing/save_to_disk.png)
+![Save to disk](../../assets/designing_the_chassis/laser_cutting_and_3d_printing/save_to_disk.png)
 
 
 {: .highlight }

@@ -25,8 +25,8 @@ favicon_ico: "/assets/favicon.png"
 # For copy button on code
 enable_copy_code_button: true
 
-
-# url: https://just-the-docs.github.io
+baseurl: "/self-balancing-robot" # the subpath of your site, e.g. /blog
+url: "https://uwa-robotics-club.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
 
 # Aux links for the upper right navigation

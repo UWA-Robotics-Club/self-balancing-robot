@@ -5,7 +5,6 @@ nav_order: 4
 #parent: ..
 #has_children: ...
 ---
-
 # Accelerometer and Gyroscope
 {: .no_toc }
 
@@ -21,12 +20,12 @@ nav_order: 4
 ## The MPU6050
 In this project, we will be using the MPU6050 to measure the robot's orientation and movement in real time. The MPU6050 is a small, low-cost sensor module that contains both an accelerometer and a gyroscope. The accelerometer in the MPU6050 measures acceleration in 3 dimensions (x, y and z), while the gyroscope measure angular velocity around those same dimensions. 
 
-![3 axes on MPU6050](http://127.0.0.1:4000/assets/accelerometer_and_gyroscope/mpu_ypr.png)
+![3 axes on MPU6050](../../assets/accelerometer_and_gyroscope/mpu_ypr.png)
 
 ### MPU6050 Pinout 
 In this self-balancing robot, we will only be using the VCC, GND, SCL, SDA, and INT pins.
 
-![MPU6050 pinout diagram](http://127.0.0.1:4000/assets/accelerometer_and_gyroscope/mpu6050_pinout.png)
+![MPU6050 pinout diagram](../../assets/accelerometer_and_gyroscope/mpu6050_pinout.png)
 
 | Pin  | Function | Connections |
 | :--- | :---     | :---        |
@@ -38,11 +37,11 @@ In this self-balancing robot, we will only be using the VCC, GND, SCL, SDA, and 
 
 <!-- https://components101.com/sensors/mpu6050-module -->
 
-![MPU6050 connections](http://127.0.0.1:4000/assets/accelerometer_and_gyroscope/mpu6050_connections.png)
+![MPU6050 connections](../../assets/accelerometer_and_gyroscope/mpu6050_connections.png)
 
 {: .highlight }
 > The MPU6050 module contains a 3.3V regulator which allows us to connect it to either the 5V or 3V3 pins on the Arduino Nano.
-![MPU6050 power regulator](http://127.0.0.1:4000/assets/accelerometer_and_gyroscope/mpu6050_regulator.png)
+![MPU6050 power regulator](../../assets/accelerometer_and_gyroscope/mpu6050_regulator.png)
 
 ## MPU6050 Software
 For the self-balancing robot, we will need to measure the angle of inclination (or 'tilt' angle) in real time. This allows the microcontroller to determine whether or not the robot is leaning to one side and adjust accordingly.
@@ -53,7 +52,7 @@ There are many Arduino libraries available which allows us to measure the orient
 To install the I2C Device Library:
 1. Navigate to the I2C Device Library Github repository by clicking <a href="https://github.com/jrowberg/i2cdevlib" target="_blank">here</a>.
 2. Download a .zip archive of the repository by clicking 'Code' followed by 'Download ZIP'.
-![MPU6050 connections](http://127.0.0.1:4000/assets/accelerometer_and_gyroscope/I2C_1.png)
+![MPU6050 connections](../../assets/accelerometer_and_gyroscope/I2C_1.png)
 3. Locate your Arduino libraries folder on your device. There should be a folder called 'Arduino' under 'Documents'. Inside it will be a folder called 'Libraries'.
 4.  Find the 'Arduino/I2Cdev' and 'Arduino/MPU6050' folders in the .zip archive and copy it into your libraries folder for Arduino.
 
@@ -67,10 +66,10 @@ To calibrate the MPU6050, we will be applying a level of abstraction and running
 2. Upload the code onto the Arduino Nano.
 3. Open 'Serial Monitor'. Make sure that your Baud rate is at 115200.
 4. Follow the instructions listed in the Serial Monitor. This may take a while.
-![Start calibrating](http://127.0.0.1:4000/assets/accelerometer_and_gyroscope/mpu6050_calibration_1.png)
-![Calibrating](http://127.0.0.1:4000/assets/accelerometer_and_gyroscope/mpu6050_calibration_2.png)
+![Start calibrating](../../assets/accelerometer_and_gyroscope/mpu6050_calibration_1.png)
+![Calibrating](../../assets/accelerometer_and_gyroscope/mpu6050_calibration_2.png)
 5. Note down the offset values for `acelZ`, `gyroX`, `gyroY` and `gyroZ`.
-![Offsets from calibration](http://127.0.0.1:4000/assets/accelerometer_and_gyroscope/mpu_calibration_3.png)
+![Offsets from calibration](../../assets/accelerometer_and_gyroscope/mpu_calibration_3.png)
 <!-- Fix above image to have correct spelling -->
 
 These offset values calibrate the MPU6050's digital motion processor (DMP) which combines data from the accelerometer and gyroscope into angles that we can read.
@@ -220,7 +219,7 @@ else if (mpuIntStatus & 0x02) {
 
 When the self-balancing robot is upright (i.e. the MPU6050 module is laying flat with X, Y and Z symbols visible), the `input` value should be equal to approximately 180.
 
-![Reading angles](http://127.0.0.1:4000/assets/accelerometer_and_gyroscope/reading_angles.png)
+![Reading angles](../../assets/accelerometer_and_gyroscope/reading_angles.png)
 
 {: .highlight }
 > Access to the full MPU6050 demo code can be found <a href="https://github.com/UWA-Robotics-Club/self-balancing-robot/blob/main/MPU6050_Reading_Angles/MPU6050_Reading_Angles.ino" and target="_blank">here</a> and to read more about the MPU6050 click <a href="https://lastminuteengineers.com/mpu6050-accel-gyro-arduino-tutorial/" target="_blank">here</a>!

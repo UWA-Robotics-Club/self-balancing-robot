@@ -30,21 +30,21 @@ To control the speed and direction of the 2 DC motors, we will be using the L298
 ### H-Bridge
 We can control the direction of a DC motor by swapping the polarity of voltage applied to the motor. This is done through an electronic circuit called a H-bridge. A H-bridge consists of 4 switches which work together to control the polarity of voltage applied to the motor.
 
-![H-Bridge circuit with all switches open](http://127.0.0.1:4000/assets/motor_control/h_bridge/circuit.png)
+![H-Bridge circuit with all switches open](../../assets/motor_control/h_bridge/circuit.png)
 
-![H-Bridge circuit with S1 and S4 closed](http://127.0.0.1:4000/assets/motor_control/h_bridge/circuit (1).png)
+![H-Bridge circuit with S1 and S4 closed](../../assets/motor_control/h_bridge/circuit (1).png)
 
-![H-Bridge circuit with S2 and S3 closed](http://127.0.0.1:4000/assets/motor_control/h_bridge/circuit (3).png)
+![H-Bridge circuit with S2 and S3 closed](../../assets/motor_control/h_bridge/circuit (3).png)
 
 As you can see from the above diagrams, closing switches S1 and S4 (with S2 and S3 open) causes the polarity of voltage applied to swap, compared to closing S2 and S3 (with S1 and S4 open). This will in turn cause the motor to rotate in the opposite direction.
 
 If you close both switches on the same side (e.g. S1 and S2), a short circuit will occur. 
 
-![H-bridge short circuit](http://127.0.0.1:4000/assets/motor_control/h_bridge/circuit (2).png)
+![H-bridge short circuit](../../assets/motor_control/h_bridge/circuit (2).png)
 
 Additionally, if you close both switches on the top or bottom (e.g. S1 and S3), there will be no voltage drop through the motor causing it to be stationary.
 
-![H-bridge circuit with S1 and S3 closed](http://127.0.0.1:4000/assets/motor_control/h_bridge/circuit (4).png)
+![H-bridge circuit with S1 and S3 closed](../../assets/motor_control/h_bridge/circuit (4).png)
 
 #### Summary
 
@@ -81,13 +81,13 @@ Duty cycle
 : $$ = \frac{T_{on}}{T} $$
 
 
-![PWM signal](http://127.0.0.1:4000/assets/motor_control/pwm/pwm_labelled.png)
+![PWM signal](../../assets/motor_control/pwm/pwm_labelled.png)
 
 ----
 
 ## Example
 
-![PWM signals at different duty cycles](http://127.0.0.1:4000/assets/motor_control/pwm/Pulse-Width-Modulation.jpg)
+![PWM signals at different duty cycles](../../assets/motor_control/pwm/Pulse-Width-Modulation.jpg)
 
 For example, at a duty cycle of 25%, only 25% of the maximum (100% duty cycle) power output will be delivered to the motor. Therefore, if a duty cycle of 100% results in the motor spinning at 100 rpm, a 50% duty cycle will turn the motor at 50 rpm.
 
@@ -97,7 +97,7 @@ As a result, we can use PWM to control the speed of a DC motor.
 
 ### Pinout Diagram
 
-![L298N Pinout](http://127.0.0.1:4000/assets/motor_control/pinout/L298N-Motor-Driver-Module-Pinout.png)
+![L298N Pinout](../../assets/motor_control/pinout/L298N-Motor-Driver-Module-Pinout.png)
 
 The L298N motor driver module contains 3 power supply pins (VS, GND, VSS), 4 output (OUT) pins, 4 input (IN) pins and 2 enable (EN) pins.
 
@@ -105,7 +105,7 @@ adapted from: https://lastminuteengineers.com/l298n-dc-stepper-driver-arduino-tu
 
 #### Power Supply Pins
 
-![L298N Power Supply Pinout](http://127.0.0.1:4000/assets/motor_control/pinout/l298n_pinout_power.png)
+![L298N Power Supply Pinout](../../assets/motor_control/pinout/l298n_pinout_power.png)
 
 
 | Pin  | Function | Connections |
@@ -114,17 +114,17 @@ adapted from: https://lastminuteengineers.com/l298n-dc-stepper-driver-arduino-tu
 | GND |  Common ground pin  | Connected to the negative terminal of the power supply |
 | VSS or 5V |  Powers the logic circuit of the L298N module and accepts inputs of 5V to 7V  | Connected to positive terminal of another power supply |
 
-![L298N Power Supply Connections](http://127.0.0.1:4000/assets/motor_control/pinout/power_supply_l298N.png)
+![L298N Power Supply Connections](../../assets/motor_control/pinout/power_supply_l298N.png)
 
 
-![L298N Regulators](http://127.0.0.1:4000/assets/motor_control/pinout/l298n_pinout_regulator.png)
+![L298N Regulators](../../assets/motor_control/pinout/l298n_pinout_regulator.png)
 
 
 The L298N motor driver module also includes a regulator enable jumper which allows us to power the logic circuitry using the motor power supply. When the jumper is in place, we no longer need to connect a power supply to the VSS pin and can leave it open.
 
 #### Output Motor Pins
 
-![L298N Output Pins](http://127.0.0.1:4000/assets/motor_control/pinout/l298n_pinout_output.png)
+![L298N Output Pins](../../assets/motor_control/pinout/l298n_pinout_output.png)
 
 | Pin  | Function | Connections |
 | :--- | :---     | :---        |
@@ -133,12 +133,12 @@ The L298N motor driver module also includes a regulator enable jumper which allo
 | OUT3 | Powers motor 2 | Connected to one side of motor 2 |
 | OUT4 | Powers motor 2 | Connected to the other side of motor 2 |
 
-![L298N Motor Connections](http://127.0.0.1:4000/assets/motor_control/pinout/output_l298N.png)
+![L298N Motor Connections](../../assets/motor_control/pinout/output_l298N.png)
 
 
 #### Direction Control Pins
 
-![L298N Input Pins](http://127.0.0.1:4000/assets/motor_control/pinout/l298n_pinout_input.png)
+![L298N Input Pins](../../assets/motor_control/pinout/l298n_pinout_input.png)
 
 | Pin  | Function | Connections |
 | :--- | :---     | :---        |
@@ -149,7 +149,7 @@ The L298N motor driver module also includes a regulator enable jumper which allo
 
 #### Speed Control Pins
 
-![L298N Enable Pins](http://127.0.0.1:4000/assets/motor_control/pinout/l298n_pinout_en.png)
+![L298N Enable Pins](../../assets/motor_control/pinout/l298n_pinout_en.png)
 
 | Pin  | Function | Connections |
 | :--- | :---     | :---        |
@@ -162,7 +162,7 @@ Make sure to disconnect the jumpers connecting 5V to ENA and ENB if you would li
 
 Note: digital pins start with the letter 'D' (put this in footnote???)
 
-![L298N Connections with Motors and Arduino Nano](http://127.0.0.1:4000/assets/motor_control/pinout/l298n_connections.png)
+![L298N Connections with Motors and Arduino Nano](../../assets/motor_control/pinout/l298n_connections.png)
 
 ## Code Examples
 Since the L298N is a dual H-bridge module, there are 2 separate H-bridges, allowing us to control each motor independently. In this code example, we will be controlling 'Motor 1' which is connected to OUT1 and OUT2. 
