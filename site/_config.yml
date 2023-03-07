@@ -1,8 +1,12 @@
-# Set a path/url to a logo that will be displayed instead of the title
-#logo: "/assets/images/just-the-docs.png"
-# Set a path/url to a favicon that will be displayed by the browser
-#favicon_ico: "/assets/images/favicon.ico"
-
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole site, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing these this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
 
 title: The Self-Balancing Robot
 description: Project documentation for the self-balancing robot!
@@ -12,11 +16,17 @@ color_scheme: dark
 
 math: katex
 
+# Set a path/url to a logo that will be displayed instead of the title
+#logo: "/assets/images/just-the-docs.png"
+# Set a path/url to a favicon that will be displayed by the browser
+favicon_ico: "/assets/favicon.ico"
+
+
 # For copy button on code
 enable_copy_code_button: true
 
 
-url: https://just-the-docs.github.io
+# url: https://just-the-docs.github.io
 
 
 # Aux links for the upper right navigation
@@ -31,8 +41,7 @@ aux_links_new_tab: false
 # Footer content
 # appears at the bottom of every page's main content
 # Note: The footer_content option is deprecated and will be removed in a future major release. Please use `_includes/footer_custom.html` for more robust markup / liquid-based content.
-footer_content: "Copyright &copy; 2017-2020 Patrick Marsceill. Distributed by an <a href=\"https://github.com/just-the-docs/just-the-docs/tree/main/LICENSE.txt\">MIT license.</a>"
-
+footer_content: "Copyright &copy; 2023 Dorothy Jong.
 # Back to top link
 back_to_top: true
 back_to_top_text: "Back to top"
