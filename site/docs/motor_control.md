@@ -21,6 +21,12 @@ nav_order: 3
 ## The L298N Motor Driver Module
 To control the speed and direction of the 2 DC motors, we will be using the L298N motor driver. The L298N contains 2 H-bridges which allows us to control the direction of 2 DC motors individually, while pulse-width modulation (PWM) will be used to control the speed of the motors.
 
+
+{: .highlight }
+> This page has been adapted from 'Last Minute Engineers'. For more info, visit their site 
+ <a href="https://lastminuteengineers.com/l298n-dc-stepper-driver-arduino-tutorial/
+" target="_blank">here</a>!
+
 ### H-Bridge
 We can control the direction of a DC motor by swapping the polarity of voltage applied to the motor. This is done through an electronic circuit called a H-bridge. A H-bridge consists of 4 switches which work together to control the polarity of voltage applied to the motor.
 
@@ -32,8 +38,6 @@ We can control the direction of a DC motor by swapping the polarity of voltage a
 
 As you can see from the above diagrams, closing switches S1 and S4 (with S2 and S3 open) causes the polarity of voltage applied to swap, compared to closing S2 and S3 (with S1 and S4 open). This will in turn cause the motor to rotate in the opposite direction.
 
-- add gif from website if possible
-
 If you close both switches on the same side (e.g. S1 and S2), a short circuit will occur. 
 
 ![H-bridge short circuit](http://127.0.0.1:4000/assets/motor_control/h_bridge/circuit (2).png)
@@ -42,15 +46,15 @@ Additionally, if you close both switches on the top or bottom (e.g. S1 and S3), 
 
 ![H-bridge circuit with S1 and S3 closed](http://127.0.0.1:4000/assets/motor_control/h_bridge/circuit (4).png)
 
-Summary??
+#### Summary
 
 Here we will use '1' to represent a closed switch and '0' to represent an open switch.
 
 | S1 | S2 | S3 | S4 | Result |
 | :--- | :--- | :--- | :--- | :--- |
 |  0  |  0  |  0  |  0  | Motor is stationary |
-|  1  |  0  |  0  |  1  | Motor rotates clockwise? |
-|  0  |  1  |  1  |  0  | Motor rotates anti-clockwise? |
+|  1  |  0  |  0  |  1  | Motor rotates clockwise |
+|  0  |  1  |  1  |  0  | Motor rotates anti-clockwise |
 |  0  |  1  |  0  |  1  | Motor is stationary |
 |  1  |  0  |  1  |  0  | Motor is stationary |
 |  1  |  1  |  0  |  0  | Short circuit |
@@ -61,8 +65,6 @@ Here we will use '1' to represent a closed switch and '0' to represent an open s
 Pulse-width modulation (PWM) is a way of varying the average power output of a digital signal by pulsing the digital signal on and off at different lengths of time. 
 
 A PWM signal is a periodic rectangular signal which alternates between HIGH (5V on Arduinos) and LOW (0V). Decreasing the 'on'-time of the pulse results in a lower power output to the motor and hence a decrease in speed.
-
-----
 
 #### Definitions
 T_on
