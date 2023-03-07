@@ -61,30 +61,15 @@ A more advance type of feedback control is PID control. PID control or Proportio
 
 ![PID formula](http://127.0.0.1:4000/assets/PID_control/pid-loop-schematic-structure.png)
 
-The proportional term consists of $$K_p e(t)$$ where $$e(t)$$ is the error term. This term has the largest effect on the output of the PID loop. A $$K_p$$ is chosen so that the desired output is reached as quickly as possible but without overshooting. Therefore, the output will approach the desired value but never surpass it. 
+The proportional term consists of $$K_p e(t)$$ where $$e(t)$$ is the error term. This term has the largest effect on the output of the PID loop. A $$K_p$$ is chosen so that the desired output is reached as quickly as possible but without overshooting. Therefore, the output will approach the desired value but never surpass it. Unfortunately, this means that the controller may reach equilibrium without ever reaching the desired output. This difference is called the steady state error (error while in equilibrium).
 
-(ADD IMAGE OF GRAPH!!)
+The integral term consists of $$K_i \int_{0}^{t} e(t) dt$$ and is used to eliminate the steady state error. However, it may cause overshooting to occur as it responds to accumulated errors from the past.
 
-The integral term consists of $$K_i \int_{0}^{t} e(t) dt$$ and is used so that the desired value is reached quicker (which is important for a self-balancing robot). However, it causes overshooting to occur.
+The derivative term is $$K_d \frac{d}{dt} e(t)$$. It increases the response time of the system so that the desired value is reached quicker (which is important for a self-balancing robot) and decreases overshooting.
 
-(ADD ANOTHER IMAGE??)
+All in all, the combination of the proportional, integral and derivative terms allows the self-balancing robot to accurately correct its orientation in a reasonable amount of time.
 
-The derivative term is $$K_d \frac{d}{dt} e(t)$$. It increases the response
-
-
-- explain each term in formula
-
-### Integral
-to do 
-
-### Derivative 
-to do 
-
-### PID
-to do - overall
-
-- explain what increasing each variable does (wikipedia table)
-
+![PID animation](http://127.0.0.1:4000/assets/PID_control/PID_Compensation_Animated.gif)
 
 
 ## Arduino PID Library
@@ -128,9 +113,7 @@ pid.SetOutputLimits(-255, 255);
 To run the PID calculations, while there is no MPU data to process, we can use the function `pid.Compute()` which is called once every `loop()`. It will calculate a new output at the specified frequency, or do nothing in between. Once the PID calculation is complete we can use the new `output` to set the motor speed, and `input` to determine the motor direction.
 
 {: .highlight }
-> Complete your attempt at connecting the motor control and MPU6050 readings using a PID controller! If you get stuck, click <a href="https://lastminuteengineers.com/mpu6050-accel-gyro-arduino-tutorial/" target="_blank">here</a>.
-
-<!-- change link once code is on github -->
+> Complete your attempt at connecting the motor control and MPU6050 readings using a PID controller! If you get stuck, click <a href="https://github.com/UWA-Robotics-Club/self-balancing-robot/blob/main/Self_Balancing_Robot/Self_Balancing_Robot.ino" target="_blank">here</a>.
 
 ## PID Tuning
 The last step to completing your self-balancing robot is PID tuning. PID tuning is when you correctly set the PID variables (`Kp`, `Ki` and `Kd`) so that your controlled variable is able to stay as close as possible to its desired value. For the self-balancing robot, this desired value is the pitch angle when the robot is standing upright. You can determine this angle by reading the MPU while the robot is upright.
