@@ -12,7 +12,7 @@ Through this project, members will gain basic skills in CAD design, 3D printing/
 <video src="http://127.0.0.1:4000/assets/clip_1.mp4" controls="controls" style="max-width: 730px;">
 </video>
 
-<!-- Video works if you load the site for a while...  -->
+<!-- Video works if you load the site for a while... -->
 
 ## Parts
 - Arduino Nano
