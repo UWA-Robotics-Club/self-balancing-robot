@@ -9,7 +9,7 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 title: The Self-Balancing Robot
 description: Project documentation for the self-balancing robot!
-theme: just-the-docs
+remote_theme: just-the-docs/just-the-docs
 # Color scheme supports "light" (default) and "dark"
 color_scheme: dark
 
