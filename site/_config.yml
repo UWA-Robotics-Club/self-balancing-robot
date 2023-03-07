@@ -7,19 +7,19 @@
 #
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # 'jekyll serve'. If you change this file, please restart the server process.
-
 title: The Self-Balancing Robot
 description: Project documentation for the self-balancing robot!
 theme: just-the-docs
 # Color scheme supports "light" (default) and "dark"
 color_scheme: dark
 
+
 math: katex
 
 # Set a path/url to a logo that will be displayed instead of the title
 #logo: "/assets/images/just-the-docs.png"
 # Set a path/url to a favicon that will be displayed by the browser
-favicon_ico: "/assets/favicon.ico"
+favicon_ico: "/assets/favicon.png"
 
 
 # For copy button on code
@@ -35,13 +35,13 @@ aux_links:
     - "//github.com/UWA-Robotics-Club/self-balancing-robot/"
 
 # Makes Aux links open in a new tab. Default is false
-aux_links_new_tab: false
+aux_links_new_tab: true
 
 
 # Footer content
 # appears at the bottom of every page's main content
 # Note: The footer_content option is deprecated and will be removed in a future major release. Please use `_includes/footer_custom.html` for more robust markup / liquid-based content.
-footer_content: "Copyright &copy; 2023 Dorothy Jong.
+footer_content: "Copyright &copy; 2023 Dorothy Jong."
 # Back to top link
 back_to_top: true
 back_to_top_text: "Back to top"
@@ -51,7 +51,7 @@ last_edit_timestamp: true # show or hide edit time - page must have `last_modifi
 last_edit_time_format: "%b %e %Y at %I:%M %p" # uses ruby's time format: https://ruby-doc.org/stdlib-2.7.0/libdoc/time/rdoc/Time.html
 
 # Footer "Edit this page on GitHub" link text
-gh_edit_link: true # show or hide edit this page link
+gh_edit_link: false # show or hide edit this page link
 gh_edit_link_text: "Edit this page on GitHub."
 gh_edit_repository: "https://github.com/UWA-Robotics-Club/self-balancing-robot" # the github URL for your repo
 gh_edit_branch: "gh-pages" # the branch that your docs is served from
